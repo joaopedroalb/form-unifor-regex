@@ -1,0 +1,25 @@
+.nav-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 8px;
+    background-color: #24252a;
+
+    .nav-item {
+        &.selected{
+            color: #a2d2ff;
+        }
+        color: var(--white);
+        background-color: #24252a;
+        padding: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover{
+            background-color: rgba(107, 107, 107, 0.473);
+        }
+    }
+}
+
