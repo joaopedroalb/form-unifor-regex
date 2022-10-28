@@ -79,6 +79,11 @@
             background-color: #5e7ce2;
             color: var(--white);
             cursor: pointer;
+
+            &:disabled{
+                opacity: .85;
+                cursor:not-allowed;
+            }
         }
     }
 }

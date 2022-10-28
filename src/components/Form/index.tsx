@@ -29,9 +29,23 @@ export default function Form({handleCreate}:FormProps) {
     const urlInput = useRef<HTMLInputElement>(null)
     const commentInput = useRef<HTMLTextAreaElement>(null)
 
+    const hasError = errorInputs.name || errorInputs.email || errorInputs.url || errorInputs.gender || user.gender===null
+
     const handleBlurChange = (value:any, property:string) => {
+        let result = value
+        if(property === 'url'){
+            result = result.replaceAll(' ','')
+            urlInput.current!.value = result
+        }
+
+        if(property === 'email'){
+            result = result.replaceAll(' ','')
+            emailInput.current!.value = result
+        }
+            
+
         validateByProperty(value, property)
-        setUser({...user, [property]:value})
+        setUser({...user, [property]:result})
     }
 
     const validateByRegex = (value:string, regex:RegExp):Boolean =>{
@@ -142,7 +156,7 @@ export default function Form({handleCreate}:FormProps) {
             </div>
 
             <footer className='footer-form'>
-                <button>Confirmar</button>
+                <button disabled={hasError}>Confirmar</button>
             </footer>
         </form>
     )

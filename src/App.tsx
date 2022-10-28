@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.scss'
 import Form from './components/Form'
 import Navbar, {NavbarProps} from './components/Navbar'
+import UserList from './components/UserList'
 
 export type UserData = {
   name: string,
@@ -27,9 +28,11 @@ function App() {
         onChange={(value: 'FORM'|'LIST')=>{setNavState(value)}}
       />
      <div className='content'>
-      <Form
-        handleCreate={handleAddUser}
-      />
+      {navState === 'FORM' ? 
+      <Form handleCreate={handleAddUser}/>
+      :
+      <UserList list={userList}/>
+      }
      </div>
     </div>
   )
